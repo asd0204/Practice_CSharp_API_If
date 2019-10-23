@@ -2,17 +2,34 @@
 
 public class ScripotCS : MonoBehaviour
 {
-    Animator m_Animator;
-    public Animator chicken;
-    bool 跑步開關;
+    private Animator m_Animator;
 
-    private void Update()
+    private bool m_mogo;
+
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        //Get the Animator attached to the GameObject you are intending to animate.
+        m_Animator = gameObject.GetComponent<Animator>();
+        m_mogo = false;
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.E))
         {
-            chicken.SetTrigger("吃飯觸發器");
+            m_Animator.SetTrigger("吃飯觸發器");
         }
 
-        chicken.SetBool("跑步開關", Input.GetKey(KeyCode.R));
+        if ((Input.GetKey(KeyCode.R)))
+
+        {
+            m_Animator.SetBool("跑步開關", true);
+        }
+        else
+        {
+            m_Animator.SetBool("跑步開關", false);
+        }
+
     }
+
 }
